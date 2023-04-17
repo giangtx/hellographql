@@ -1,6 +1,6 @@
-import { createUser, updateUser, login } from './UserMutation';
+import { createUser, updateUser, login } from './UserMutation.js';
 
-module.exports = {
+export default {
     createUser,
     updateUser,
     login

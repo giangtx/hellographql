@@ -1,7 +1,7 @@
-import { UserType } from '../types';
+import { UserType } from '../types/index.js';
 import { GraphQLInt, GraphQLString } from 'graphql';
 import jwt from 'jsonwebtoken';
-import * as userService from '../../service/user.service';
+import * as userService from '../../service/user.service.js';
 
 export const createUser = {
     type: UserType,

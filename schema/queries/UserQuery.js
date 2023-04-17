@@ -1,7 +1,7 @@
 import { GraphQLList, GraphQLInt } from 'graphql';
-import { UserType } from '../types';
-import { getAll, getById } from '../../service/user.service';
-import { checkCookie } from '../../utils/jwtToken'
+import { UserType } from '../types/index.js';
+import { getAll, getById } from '../../service/user.service.js';
+import { checkCookie } from '../../utils/jwtToken.js'
 
 export const users = {
     type: new GraphQLList(UserType),

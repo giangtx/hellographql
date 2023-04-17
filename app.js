@@ -4,11 +4,17 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import { graphqlHTTP } from 'express-graphql';
-import schema from './schema';
+import schema from './schema/index.js';
 import mongoose from 'mongoose';
-import dbConfig from './config/db.config';
+import dbConfig from './config/db.config.js';
 import http from "http";
-var debug = require('debug')('graphql:server');
+import debug from 'debug';
+debug('graphql:server');
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 
@@ -36,6 +42,12 @@ mongoose.connect(dbConfig.url, {
 });
 mongoose.set('debug', true);
 
+app.get("/", (req, res) => {
+  res.send("hello");
+});
+app.get("/test", (req, res) => {
+  res.send("giang test");
+});
 app.use('/graphql', graphqlHTTP( async( request, response )=>({
   schema,
   graphiql: true,
@@ -138,4 +150,4 @@ function normalizePort(val) {
 }
 
 
-module.exports = app;
+export default app;
